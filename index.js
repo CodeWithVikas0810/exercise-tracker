@@ -35,10 +35,7 @@ app.post('/api/users', (req, res) => {
 })
 
 app.get('/api/users', (req, res) => {
-  res.send({
-    username: data.username,
-    _id: data.id
-  })
+  res.send(data)
 })
 
 app.post('/api/users/:_id/exercises', (req, res) => {
