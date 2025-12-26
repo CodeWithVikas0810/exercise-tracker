@@ -23,8 +23,9 @@ app.get('/', (req, res) => {
 app.post('/api/users', (req, res) => {
   const userName = req.body.username
   const newUser = {
-    "_id": id,
-    "username": userName
+    "username": userName,
+    "_id": id
+
   }
   data.push(newUser);
   res.json({
