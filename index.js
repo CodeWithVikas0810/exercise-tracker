@@ -10,7 +10,7 @@ app.use(express.urlencoded({
 }));
 
 let id = 1;
-let data = [];
+let data = [{}];
 let exercise = [];
 
 app.use(cors())
