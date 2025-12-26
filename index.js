@@ -28,10 +28,7 @@ app.post('/api/users', (req, res) => {
 
   }
   data.push(newUser);
-  res.json({
-    "username": userName,
-    "_id": id.toString()
-  })
+  res.json(newUser)
   id++;
 })
 
