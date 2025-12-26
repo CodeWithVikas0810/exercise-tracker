@@ -10,7 +10,6 @@ app.use(express.urlencoded({
 }));
 
 let id = 1;
-let user = {};
 let data = [];
 let exercise = [];
 
@@ -23,7 +22,6 @@ app.get('/', (req, res) => {
 
 app.post('/api/users', (req, res) => {
   const userName = req.body.username
-  user[userName] = id;
   const newUser = {
     "_id": id,
     "username": userName
@@ -92,10 +90,10 @@ app.get("/api/users/:_id/logs", (req, res) => {
   } = req.query;
 
   if (from) {
-    userExercise.filter(user => new Date(user.date) >= new Date(from));
+    userExercise = userExercise.filter(user => new Date(user.date) >= new Date(from));
   }
   if (to) {
-    userExercise.filter(user => new Date(user.date) <= new Date(to));
+    userExercise = userExercise.filter(user => new Date(user.date) <= new Date(to));
   }
   if (limit) {
     userExercise = userExercise.slice(0, limit);
