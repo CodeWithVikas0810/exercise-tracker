@@ -10,7 +10,7 @@ app.use(express.urlencoded({
 }));
 
 let id = 1;
-let data = [{}];
+let data = [];
 let exercise = [];
 
 app.use(cors())
@@ -30,7 +30,7 @@ app.post('/api/users', (req, res) => {
   data.push(newUser);
   res.json({
     "username": userName,
-    "_id": id
+    "_id": id.toString()
   })
   id++;
 })
@@ -110,17 +110,8 @@ app.get("/api/users/:_id/logs", (req, res) => {
       duration: users.duration,
       date: users.date
     }))
-
-
-
   })
-
 })
-
-
-
-
-
 const listener = app.listen(process.env.PORT || 4000, () => {
   console.log('Your app is listening on port ' + listener.address().port)
 })
