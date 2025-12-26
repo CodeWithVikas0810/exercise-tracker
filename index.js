@@ -101,7 +101,7 @@ app.get("/api/users/:_id/logs", (req, res) => {
 
 
   res.send({
-    _id: userObj.id,
+    _id: userObj._id,
     username: userObj.username,
     count: userExercise.length,
     log: userExercise.map(users => ({
