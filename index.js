@@ -24,11 +24,14 @@ app.post('/api/users', (req, res) => {
   const userName = req.body.username
   const newUser = {
     "username": userName,
-    "_id": id
+    "id": id
 
   }
   data.push(newUser);
-  res.json(newUser)
+  res.json({
+    "username": userName,
+    "_id": id
+  })
   id++;
 })
 
@@ -37,7 +40,7 @@ app.get('/api/users', (req, res) => {
 })
 
 app.post('/api/users/:_id/exercises', (req, res) => {
-  const id = req.params._id;
+  const id = Number(req.params._id);
   const desc = req.body.description;
   const duration = Number(req.body.duration);
   let date;
