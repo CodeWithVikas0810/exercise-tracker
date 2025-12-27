@@ -96,10 +96,14 @@ app.get("/api/users/:_id/logs", (req, res) => {
   } = req.query;
 
   if (from) {
-    userExercise = userExercise.filter(user => new Date(user.date) >= new Date(from));
+    userExercise = userExercise.filter(user => {
+      return new Date(user.date) >= new Date(from)
+    });
   }
   if (to) {
-    userExercise = userExercise.filter(user => new Date(user.date) <= new Date(to));
+    userExercise = userExercise.filter(user => {
+      return new Date(user.date) <= new Date(to)
+    });
   }
   if (limit) {
     userExercise = userExercise.slice(0, limit);
