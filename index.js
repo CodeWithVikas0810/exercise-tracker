@@ -24,23 +24,28 @@ app.post('/api/users', (req, res) => {
   const userName = req.body.username
   const newUser = {
     "username": userName,
-    "_id": id
+    "_id": id.toString()
 
   }
   data.push(newUser);
   res.json({
     "username": userName,
-    "_id": id
+    "_id": id.toString()
   })
   id++;
 })
 
 app.get('/api/users', (req, res) => {
-  res.send(data)
+  const users = data.map(user => ({
+    username: user.username,
+    _id: user._id
+  }));
+  res.json(users);
+
 })
 
 app.post('/api/users/:_id/exercises', (req, res) => {
-  const id = Number(req.params._id);
+  const id = req.params._id;
   const desc = req.body.description;
   const duration = Number(req.body.duration);
   let date;
