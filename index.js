@@ -102,7 +102,7 @@ app.get("/api/users/:_id/logs", (req, res) => {
     userExercise = userExercise.filter(user => new Date(user.date) <= new Date(to));
   }
   if (limit) {
-    userExercise = userExercise.slice(0, limit);
+    userExercise = userExercise.slice(0, parseInt(limit));
   }
 
 
