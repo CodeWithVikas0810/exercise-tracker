@@ -85,7 +85,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
 
 app.get("/api/users/:_id/logs", (req, res) => {
 
-  const id = Number(req.params._id)
+  const id = req.params._id
   const userObj = data.find(user => user._id === id)
   const userExercise = exercise.filter(e => e._id === id);
 
@@ -95,15 +95,15 @@ app.get("/api/users/:_id/logs", (req, res) => {
     limit
   } = req.query;
 
-  // if (from) {
-  //   userExercise = userExercise.filter(user => new Date(user.date) >= new Date(from));
-  // }
-  // if (to) {
-  //   userExercise = userExercise.filter(user => new Date(user.date) <= new Date(to));
-  // }
-  // if (limit) {
-  //   userExercise = userExercise.slice(0, limit);
-  // }
+  if (from) {
+    userExercise = userExercise.filter(user => new Date(user.date) >= new Date(from));
+  }
+  if (to) {
+    userExercise = userExercise.filter(user => new Date(user.date) <= new Date(to));
+  }
+  if (limit) {
+    userExercise = userExercise.slice(0, limit);
+  }
 
 
   res.send({
