@@ -115,13 +115,13 @@ app.get("/api/users/:_id/logs", (req, res) => {
 
 
   res.send({
-    "id": userObj._id,
-    "username": userObj.username,
-    "count": userExercise.length,
-    "log": userExercise.map(users => ({
-      "description": users.description,
-      "duration": users.duration,
-      "date": users.date
+    _id: userObj._id,
+    username: userObj.username,
+    count: userExercise.length,
+    log: userExercise.map(users => ({
+      description: users.description,
+      duration: users.duration,
+      date: users.date
     }))
   })
 })
