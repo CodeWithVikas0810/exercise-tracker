@@ -87,7 +87,11 @@ app.get("/api/users/:_id/logs", (req, res) => {
 
   const id = req.params._id
   const userObj = data.find(user => user._id === id)
-  const userExercise = exercise.filter(e => e._id === id);
+  let userExercise = exercise.filter(e => e._id === id);
+
+  if (!userObj) {
+    return res.status(404).json({ error: "User not found" });
+  }
 
   let {
     from,
@@ -111,13 +115,13 @@ app.get("/api/users/:_id/logs", (req, res) => {
 
 
   res.send({
-    _id: userObj._id,
-    username: userObj.username,
-    count: userExercise.length,
-    log: userExercise.map(users => ({
-      description: users.description,
-      duration: users.duration,
-      date: users.date
+    "id": userObj._id,
+    "username": userObj.username,
+    "count": userExercise.length,
+    "log": userExercise.map(users => ({
+      "description": users.description,
+      "duration": users.duration,
+      "date": users.date
     }))
   })
 })
